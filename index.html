@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Form Validation</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+          <div class="logo">
+            <img src="https://svgshare.com/i/_go.svg" alt="" />
+          </div>
+          <div class="image"></div>
+          <div class="text">
+            Start for free & get <br />
+            attractive offers today !
+          </div>
+        </div>
+        <form id="form">
+          <div class="social">
+            <div class="title">Get Started</div>
+            <div class="question">
+              Already Have an Account? <br />
+              <span>Sign In</span>
+            </div>
+      
+            <div class="btn">
+              <div class="btn-1">
+                <img src="https://img.icons8.com/color/30/000000/google-logo.png" />
+                Sign Up
+              </div>
+              <div class="btn-2">
+                <img src="https://img.icons8.com/ios-filled/30/ffffff/facebook-new.png" />
+                Sign Up
+              </div>
+            </div>
+      
+            <div class="or">Or</div>
+          </div>
+      
+          <!-- /** 
+                * ! user name Input here
+               **/ -->
+      
+          <div>
+            <label for="username">User Name</label>
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" id="username" placeholder="Parth Amodkar" />
+            <i class="fas fa-exclamation-circle failure-icon"></i>
+            <i class="far fa-check-circle success-icon"></i>
+            <div class="error"></div>
+          </div>
+      
+          <!-- /** 
+                * ! Email Input here
+               **/ -->
+      
+          <div>
+            <label for="email">Email</label>
+            <i class="far fa-envelope"></i>
+            <input type="email" name="email" id="email" placeholder="abc@gmail.com" />
+            <i class="fas fa-exclamation-circle failure-icon"></i>
+            <i class="far fa-check-circle success-icon"></i>
+            <div class="error"></div>
+          </div>
+      
+          <!-- /** 
+                * ! Password Input here
+               **/ -->
+      
+          <div>
+            <label for="password">Password</label>
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" id="password" placeholder="Password here" />
+            <i class="fas fa-exclamation-circle failure-icon"></i>
+            <i class="far fa-check-circle success-icon"></i>
+            <div class="error"></div>
+          </div>
+      
+          <button type="submit" id="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- <script src="script.js"></script> -->
+      <script>
+        
+        let id = (id) => document.getElementById(id) 
+        let classes = (classes) => document.getElementsByClassName(classes)
+
+        //Declare variable
+        let username = id('username'),
+            email = id('email'),
+            password = id('password'),
+            submit = id('submit'),
+            errorMsg = classes('error'),
+            form = id('form'),
+            failreIcon = classes('failure-icon'),
+            successIcon = classes('success-icon')
+
+        //Create validation
+        // form.addEventListener('submit', (e) => {
+        //     e.preventDefault()
+        //     if(username.value === ''){
+        //         errorMsg[0].innerHTML = 'please enter username',
+        //         failreIcon[0].style.opacity = '1',
+        //         successIcon[0].style.opacity = '0'
+        //     }else{
+        //         errorMsg[0].style.display = 'none'
+        //         failreIcon[0].style.opacity = '0',
+        //         successIcon[0].style.opacity = '1'
+        //     }
+        // })  
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            
+            engine(username, 0, 'please enter username'),
+            engine(email, 1, 'please enter email'),
+            engine(password, 2, 'please enter password')
+        })            
+
+        let engine = (id, serial, message) => {
+            if(id.value === ''){
+                errorMsg[serial].innerHTML = message
+                failreIcon[serial].style.opacity = '1'
+                successIcon[serial].style.opacity = '0'
+            }
+            else{
+                errorMsg[serial].innerHTML = ''
+                failreIcon[serial].style.opacity = '0'
+                successIcon[serial].style.opacity = '1'
+            }
+        }
+</script>
+</body>
+</html>
